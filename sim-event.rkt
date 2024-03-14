@@ -24,32 +24,32 @@
 
   ;; constructor.
   ;; ( time . ( id . (user . id-lane)))
-  (define (event time id params)
-    (raise 'event)
+  (define (event time id params)  
+   (cons time (cons id params))
     )
 
   ;; P: True
-  (define (event? val)
+  (define (event? val)  ;returns true if it matches the format of an event
     (raise 'event?))
 
+  ;; P: valid-event
+  (define (event-time ev) ; return the time of a given event
+    (car ev))
+
+ 
   ;; P: valid event
-  (define (event-time ev)
-    (raise 'event-time))
+  (define (event-type ev) ; returns the type of the event given
+    (car (cdr ev)))
 
-  ;; P: valid event
-  (define (event-type ev)
-    (raise 'event-type))
-
-  
-
+ 
   ;; P: event-params
-  (define (event-params ev)
+  (define (event-params ev) ;return the customer and lane ID as a pair
     (raise 'event-params))
 
-  (define (event-user ev)
-    (raise 'event-user))
+  (define (event-user ev) ; returns the customer ID engaged in the event
+    (car (cdr (cdr ev))))
 
-  (define (event-lane ev)
+  (define (event-lane ev) ; returns the lane ID relating to the event
     (raise 'event-lane))
 
 
